@@ -30,6 +30,8 @@ import java.util.Set;
 @Log4j2
 public class GlobalExceptionHandler {
 
+    public static final String S_S = "%s:%s";
+
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public CommonResponse<Object> handleError(MissingServletRequestParameterException e) {
         log.warn("Missing Request Parameter", e);
@@ -57,7 +59,8 @@ public class GlobalExceptionHandler {
         log.warn("Method Argument Not Valid", e);
         BindingResult result = e.getBindingResult();
         FieldError error = result.getFieldError();
-        String message = String.format("%s:%s", error.getField(), error.getDefaultMessage());
+        assert error != null;
+        String message = String.format(S_S, error.getField(), error.getDefaultMessage());
         return CommonResponse
                 .builder()
                 .code(ResultCode.PARAM_VALID_ERROR)
@@ -69,7 +72,8 @@ public class GlobalExceptionHandler {
     public CommonResponse<Object> handleError(BindException e) {
         log.warn("Bind Exception", e);
         FieldError error = e.getFieldError();
-        String message = String.format("%s:%s", error.getField(), error.getDefaultMessage());
+        assert error != null;
+        String message = String.format(S_S, error.getField(), error.getDefaultMessage());
         return CommonResponse
                 .builder()
                 .code(ResultCode.PARAM_BIND_ERROR)
@@ -83,7 +87,7 @@ public class GlobalExceptionHandler {
         Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
         ConstraintViolation<?> violation = violations.iterator().next();
         String path = ((PathImpl) violation.getPropertyPath()).getLeafNode().getName();
-        String message = String.format("%s:%s", path, violation.getMessage());
+        String message = String.format(S_S, path, violation.getMessage());
         return CommonResponse
                 .builder()
                 .code(ResultCode.PARAM_VALID_ERROR)
