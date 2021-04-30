@@ -2,7 +2,7 @@ package com.wizard.cynthia.controller;
 
 import com.wizard.cynthia.api.CommonResponse;
 import com.wizard.cynthia.client.WireMockClient;
-import com.wizard.cynthia.model.JsonConfig;
+import com.wizard.cynthia.model.Mapping;
 import com.wizard.cynthia.model.MappingPage;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +25,13 @@ public class MocoController {
 
 
     @GetMapping("/mappings")
-    public CommonResponse<MappingPage> listMappings() throws Exception {
+    public CommonResponse<MappingPage> listMappings() {
         return CommonResponse.success(wireMockClient.listMappings());
     }
 
     @PostMapping("/mappings")
-    public  CommonResponse<Object> createMapping() throws Exception {
-        wireMockClient.createMapping();
+    public  CommonResponse<Object> createMapping(@RequestBody Mapping mapping) {
+        wireMockClient.createMapping(mapping);
         return CommonResponse.success(null);
     }
 }

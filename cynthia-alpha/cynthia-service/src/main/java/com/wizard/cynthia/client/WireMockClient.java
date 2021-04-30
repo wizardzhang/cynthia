@@ -1,9 +1,11 @@
 package com.wizard.cynthia.client;
 
+import com.wizard.cynthia.model.Mapping;
 import com.wizard.cynthia.model.MappingPage;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 /**
  * @author ZZW
@@ -17,5 +19,5 @@ public interface WireMockClient {
     MappingPage listMappings();
 
     @PostMapping("/mappings/new")
-    MappingPage createMapping();
+    MappingPage createMapping(@RequestBody Mapping mapping);
 }
