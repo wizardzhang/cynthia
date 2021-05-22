@@ -53,7 +53,7 @@
                 <version>3.0.0</version>
             </dependency>
 
-            <!--解决swagger默认依赖1.2.0.RELEASE版本问题-->
+            <!--解决swagger默认依赖1.2.0.RELEASE版本问题,访问地址为http://localhost:8443/swagger-ui-->
             <dependency>
                 <groupId>org.springframework.plugin</groupId>
                 <artifactId>spring-plugin-core</artifactId>

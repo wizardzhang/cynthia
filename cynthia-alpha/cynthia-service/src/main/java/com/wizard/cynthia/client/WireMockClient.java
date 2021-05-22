@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
  * @description:
  * @date 2021/4/30 17:05
  */
-@FeignClient(name = "wiremock-service", url= "localhost:8080", path = "/__admin")
+@FeignClient(name = "com.wizard.cynthia.wiremock-service", url= "localhost:8080", path = "/__admin")
 public interface WireMockClient {
 
     @GetMapping("/mappings")

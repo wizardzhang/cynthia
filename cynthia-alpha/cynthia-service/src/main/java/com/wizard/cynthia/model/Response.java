@@ -5,6 +5,6 @@ import lombok.Data;
 @Data
 public class Response {
     private int status;
-    private String body;
+    private Object jsonBody;
 
 }
