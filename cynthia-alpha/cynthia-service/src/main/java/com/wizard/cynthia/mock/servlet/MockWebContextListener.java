@@ -1,4 +1,4 @@
-package com.wizard.cynthia.wiremock.servlet;
+package com.wizard.cynthia.mock.servlet;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -11,7 +11,7 @@ import javax.servlet.annotation.WebListener;
  * @date 2021/5/20 15:56
  */
 @WebListener
-public class WireMockWebContextListener implements ServletContextListener {
+public class MockWebContextListener implements ServletContextListener {
     private static final String APP_CONTEXT_KEY = "WireMockApp";
 
     @Override

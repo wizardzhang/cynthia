@@ -1,4 +1,4 @@
-package com.wizard.cynthia.wiremock.http.handler;
+package com.wizard.cynthia.mock.http.handler;
 
 import com.sun.deploy.net.HttpResponse;
 import org.springframework.http.HttpRequest;

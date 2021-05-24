@@ -1,7 +1,7 @@
-package com.wizard.cynthia.wiremock.servlet;
+package com.wizard.cynthia.mock.servlet;
 
 import com.google.common.io.ByteStreams;
-import com.wizard.cynthia.wiremock.http.handler.RequestHandler;
+import com.wizard.cynthia.mock.http.handler.RequestHandler;
 import lombok.extern.log4j.Log4j2;
 
 import javax.servlet.ServletConfig;
@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @author ZZW
@@ -24,7 +23,7 @@ import java.nio.charset.StandardCharsets;
  */
 @WebServlet(urlPatterns = {"/mock/*"})
 @Log4j2
-public class WireMockHandlerDispatchingServlet extends HttpServlet {
+public class MockHandlerDispatchingServlet extends HttpServlet {
 
     private RequestHandler requestHandler;
 
