@@ -1,5 +1,10 @@
 package com.wizard.cynthia.mock.servlet;
 
+import com.github.tomakehurst.wiremock.core.WireMockApp;
+import com.github.tomakehurst.wiremock.http.StubRequestHandler;
+import com.github.tomakehurst.wiremock.servlet.NotImplementedContainer;
+import com.github.tomakehurst.wiremock.standalone.CommandLineOptions;
+
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -17,7 +22,10 @@ public class MockWebContextListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
-        context.setAttribute("StubRequestHandler", new Object());
+        CommandLineOptions options = new CommandLineOptions();
+        WireMockApp wireMockApp = new WireMockApp(options, new NotImplementedContainer());
+        context.setAttribute(APP_CONTEXT_KEY, wireMockApp);
+        context.setAttribute(StubRequestHandler.class.getName(), wireMockApp.buildStubRequestHandler());
     }
 
     @Override
